@@ -1,0 +1,222 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light">
+<title>Flora Store — Moda feminina</title>
+<meta name="description" content="Flora Store — moda feminina com delicadeza. Bela Vista do Toldo - SC.">
+<style>
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;color-scheme:light}
+body{margin:0;background:#fffaf8;color:#4d3d3b;font-family:Arial,Helvetica,sans-serif}
+.header{min-height:78px;padding:12px 6%;display:flex;align-items:center;justify-content:space-between;gap:18px;background:rgba(255,250,248,.97);position:sticky;top:0;z-index:10;border-bottom:1px solid #eadbd7}
+.brand{text-decoration:none;color:#805e5a;display:flex;flex-direction:column;align-items:flex-start}
+.brand-name{font-family:Georgia,'Times New Roman',serif;font-size:36px;line-height:1;font-weight:600}
+.brand-sub{font-size:9px;letter-spacing:3px;margin-top:5px}
+.header nav{display:flex;gap:24px}
+.header nav a{color:#604e4b;text-decoration:none;font-size:13px}
+.hero{min-height:490px;padding:65px 8%;display:grid;grid-template-columns:1.1fr .9fr;gap:35px;align-items:center;background:linear-gradient(120deg,#fffaf8,#f7e8e6)}
+.eyebrow{font-size:10px;letter-spacing:2px;color:#9a7772;margin:0 0 15px}
+.hero h1{font:600 clamp(54px,7vw,88px)/.92 Georgia,'Times New Roman',serif;margin:0;color:#684e4a}
+.hero h1 em{font-weight:500;color:#ad7b79}
+.lead{max-width:510px;line-height:1.8;color:#786663}
+.btn{border:0;border-radius:28px;padding:13px 21px;font-weight:700;font-size:11px;letter-spacing:.5px;cursor:pointer;text-decoration:none;display:inline-block}
+.primary{background:#9b706d;color:#fff}
+.light,.outline{background:#fff;color:#795d59;border:1px solid #e0c9c5}
+.hero-actions{display:flex;gap:12px;flex-wrap:wrap;margin:25px 0}
+.hero-art{min-height:300px;border-radius:46% 54% 48% 52%;background:radial-gradient(circle at 50% 45%,#fffaf8 0 28%,transparent 29%),linear-gradient(140deg,#e8cecb,#f4e4e1);display:flex;align-items:center;justify-content:center;text-align:center;position:relative}
+.hero-art:before{content:"";position:absolute;inset:18px;border:1px solid #fff9;border-radius:inherit}
+.hero-art .art-text{font:600 clamp(38px,5vw,60px) Georgia,serif;color:#926c68}
+.hero-art small{display:block;font:10px Arial,sans-serif;letter-spacing:3px;margin-top:10px}
+.hero-note{font-size:12px;color:#977b76}
+.section{padding:72px 8%}
+.section-head{text-align:center;max-width:720px;margin:0 auto 35px}
+.section-head>p:first-child{font-size:10px;letter-spacing:2px;color:#a17b76}
+.section-head h2,.about h2,.contact h2{font:600 42px/1.08 Georgia,'Times New Roman',serif;color:#634c48;margin:9px 0 15px}
+.muted{color:#887572;line-height:1.7}
+.category-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;max-width:950px;margin:auto}
+.category{min-height:125px;background:#fff;border:1px solid #eadbd7;border-radius:20px;padding:22px 12px;text-align:center;display:flex;flex-direction:column;gap:10px;align-items:center;justify-content:center}
+.category .symbol{font-size:25px;color:#b98583}
+.category strong{font-size:14px;color:#604d49}
+.store{background:#f8eeec}
+.product-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}
+.product-card{background:#fff;border:1px solid #eadbd7;border-radius:20px;overflow:hidden}
+.product-image{width:100%;aspect-ratio:4/5;object-fit:cover;background:#f2e5e2;display:flex;align-items:center;justify-content:center;color:#a17b76}
+.product-image.placeholder{font-size:13px;text-align:center;padding:20px}
+.product-info{padding:17px}
+.product-info h3{font:600 23px Georgia,serif;margin:0 0 8px;color:#634c48}
+.product-info p{font-size:12px;line-height:1.6;color:#887572;min-height:35px}
+.price{font-weight:700;color:#805e5a;font-size:16px;margin:12px 0}
+.product-options{display:grid;gap:8px;margin:12px 0}
+.product-options label{font-size:11px;color:#806d69}
+.product-options select{width:100%;padding:10px;border:1px solid #e2ceca;border-radius:9px;background:white;color:#604e4b}
+.add-btn{width:100%;border:0;border-radius:20px;background:#9b706d;color:#fff;padding:12px;font-weight:700;cursor:pointer}
+.empty-store{max-width:720px;margin:auto;background:#fff;border:1px solid #eadbd7;border-radius:25px;text-align:center;padding:45px 25px}
+.empty-store .symbol{font-size:40px;color:#b98583}
+.empty-store h3{font:600 29px Georgia,serif;margin:12px}
+.empty-store p{color:#887572;line-height:1.7}
+.delivery{padding:38px 8%;background:#7b7560;color:white;display:flex;align-items:center;justify-content:space-between;gap:20px}
+.delivery h2{font:600 34px Georgia,serif;margin:4px 0}
+.delivery p{font-size:10px;letter-spacing:2px;margin:0}
+.delivery span{font-size:12px}
+.about{display:grid;grid-template-columns:.7fr 1.3fr;gap:60px;align-items:center}
+.about-art{min-height:250px;border-radius:50%;background:#f1dfdc;display:flex;align-items:center;justify-content:center;text-align:center;color:#a87975;font:600 54px Georgia,serif}
+.about p:not(.eyebrow){max-width:650px;line-height:1.9;color:#796865}
+.signature{font:italic 21px Georgia,serif;color:#a47672}
+.contact{text-align:center;background:#fff3f1}
+.contact>p:not(.eyebrow){color:#806d69;line-height:1.7}
+.contact-box{display:flex;justify-content:center;gap:12px;flex-wrap:wrap;margin-top:25px}
+.contact-box span{background:#fff;border:1px solid #eadbd7;border-radius:18px;padding:12px 16px;font-size:12px}
+footer{padding:25px 8%;display:flex;justify-content:space-between;gap:15px;align-items:center;background:#f3e4e1;color:#78615d;font-size:11px}
+.footer-brand{font:600 27px Georgia,serif}
+.footer-brand small{font:9px Arial,sans-serif;letter-spacing:2px}
+.overlay{display:none;position:fixed;inset:0;background:#3b292755;z-index:30}
+.overlay.show{display:block}
+.cart{margin-left:auto;width:min(420px,94%);height:100%;overflow:auto;background:#fffaf8;padding:32px 24px}
+.close{float:right;border:0;background:none;font-size:28px;cursor:pointer}
+.cart h2{font:600 34px Georgia,serif}
+.cart-line{display:flex;justify-content:space-between;gap:12px;padding:12px 0;border-bottom:1px solid #eadbd7;font-size:13px}
+.cart-total{border-top:1px solid #eadbd7;padding-top:18px;margin-top:18px;display:flex;justify-content:space-between;font-weight:bold}
+.toast{position:fixed;bottom:22px;left:50%;transform:translate(-50%,150px);background:#684e4a;color:#fff;padding:13px 18px;border-radius:25px;transition:.3s;z-index:50;font-size:12px;max-width:90%;text-align:center}
+.toast.show{transform:translate(-50%,0)}
+@media(max-width:800px){.header{padding:13px 5%}.header nav{display:none}.hero{grid-template-columns:1fr;padding:48px 7%}.hero-art{min-height:240px}.section{padding:55px 6%}.category-grid{grid-template-columns:1fr}.product-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.product-info{padding:12px}.product-info h3{font-size:19px}.delivery{display:block}.delivery .btn{margin-top:18px}.about{grid-template-columns:1fr;gap:30px}.about-art{min-height:190px}.section-head h2,.about h2,.contact h2{font-size:35px}footer{flex-direction:column;text-align:center}}
+@media(max-width:440px){.product-grid{grid-template-columns:1fr}.product-card{max-width:390px;width:100%;margin:auto}.product-image{aspect-ratio:4/3}.hero h1{font-size:58px}}
+</style>
+</head>
+<body>
+<header class="header">
+  <a class="brand" href="#inicio" aria-label="Flora Store, início">
+    <span class="brand-name">Flora</span><span class="brand-sub">STORE</span>
+  </a>
+  <nav aria-label="Navegação principal">
+    <a href="#inicio">Início</a><a href="#categorias">Estilo</a><a href="#loja">Peças</a><a href="#sobre">Sobre</a><a href="#contato">Contato</a>
+  </nav>
+  <button class="btn light" onclick="openCart()">Sacola <span id="cartCount">0</span></button>
+</header>
+<main>
+<section class="hero" id="inicio">
+  <div>
+    <p class="eyebrow">FLORA STORE • BELA VISTA DO TOLDO – SC</p>
+    <h1>Seu estilo,<br><em>do seu jeito.</em></h1>
+    <p class="lead">Moda feminina escolhida com carinho para acompanhar você em diferentes momentos, com beleza, conforto e personalidade.</p>
+    <div class="hero-actions"><a class="btn primary" href="#loja">Conhecer as peças</a><a class="btn light" href="#sobre">Conheça a Flora</a></div>
+    <p class="hero-note">Uma nova coleção está sendo preparada com muito carinho.</p>
+  </div>
+  <div class="hero-art" aria-label="Identidade visual Flora Store"><div class="art-text">Flora<small>MODA FEMININA</small></div></div>
+</section>
+
+<section class="section" id="categorias">
+  <div class="section-head"><p>ESCOLHIDO PARA VOCÊ</p><h2>Um toque do seu estilo</h2><p class="muted">Peças versáteis para criar combinações que têm a sua cara.</p></div>
+  <div class="category-grid">
+    <div class="category"><span class="symbol">✧</span><strong>Blusas & camisetas</strong></div>
+    <div class="category"><span class="symbol">◇</span><strong>Jeans & shorts</strong></div>
+    <div class="category"><span class="symbol">♡</span><strong>Saias & alfaiataria</strong></div>
+  </div>
+</section>
+
+<section class="section store" id="loja">
+  <div class="section-head"><p>FLORA STORE</p><h2>Peças que combinam com você</h2><p class="muted">Estamos preparando a primeira seleção de moda feminina. Os produtos aparecerão aqui assim que forem cadastrados.</p></div>
+  <div id="productGrid" class="product-grid"></div>
+  <div id="emptyStore" class="empty-store">
+    <div class="symbol">♡</div><h3>Novidades chegando</h3>
+    <p>A primeira coleção da Flora está sendo preparada. Em breve, você poderá ver fotos, tamanhos, cores e preços das peças por aqui.</p>
+  </div>
+</section>
+
+<section class="delivery">
+  <div><p>COMPRAS LOCAIS</p><h2>Flora pertinho de você</h2><span>Atendimento e entregas em Bela Vista do Toldo – SC.</span></div>
+  <button class="btn light" onclick="contactStore()">Falar com a Flora</button>
+</section>
+
+<section class="section about" id="sobre">
+  <div class="about-art">Flora</div>
+  <div><p class="eyebrow">SOBRE A FLORA</p><h2>Moda com carinho em cada detalhe.</h2>
+  <p>A Flora Store está nascendo para trazer moda feminina até você de um jeito prático e acolhedor. Cada peça será escolhida com carinho para que você encontre opções para o seu estilo e para o seu dia a dia.</p>
+  <p class="signature">Delicadeza que floresce.</p></div>
+</section>
+
+<section class="section contact" id="contato">
+  <p class="eyebrow">VAMOS FICAR POR PERTO?</p><h2>Acompanhe as novidades</h2>
+  <p>Em breve, novas peças e informações sobre a coleção da Flora Store.</p>
+  <div class="contact-box"><span>📍 Bela Vista do Toldo – SC</span><span>📱 WhatsApp: configure seu número antes de publicar</span><span>♡ Instagram: adicione o perfil da loja</span></div>
+</section>
+</main>
+<footer><div class="footer-brand">Flora <small>STORE</small></div><span>Delicadeza que floresce.</span><span>© 2026 Flora Store</span></footer>
+
+<div class="overlay" id="overlay" onclick="closeCart(event)">
+  <aside class="cart" onclick="event.stopPropagation()"><button class="close" onclick="closeCart()">×</button><h2>Sua sacola</h2><div id="cartItems"><p>Sua sacola está vazia.</p></div><div class="cart-total"><span>Total</span><strong id="cartTotal">R$ 0,00</strong></div><button class="btn primary" style="width:100%;margin-top:18px" onclick="checkout()">Continuar pelo WhatsApp</button></aside>
+</div>
+<div class="toast" id="toast" role="status"></div>
+
+<script>
+/*
+COMO CADASTRAR AS PEÇAS:
+1. Encontre a lista PRODUCTS logo abaixo.
+2. Copie um exemplo e preencha nome, preço, foto, descrição, tamanhos e cores.
+3. Em "foto", coloque um endereço de imagem (URL) acessível pela internet.
+4. Para deixar a loja sem produtos até ter estoque, mantenha PRODUCTS = [].
+Não anuncie peças como disponíveis antes de confirmar seu estoque.
+*/
+const WHATSAPP_NUMBER = ""; // Coloque aqui o número da loja com código do país, somente números. Ex.: 5547999999999
+
+const PRODUCTS = [
+  // Exemplo para copiar quando tiver uma peça real:
+  // { id: 1, name: "Blusa básica", price: 49.90, photo: "https://endereco-da-foto.jpg", description: "Blusa confortável para o dia a dia.", sizes: ["P","M","G"], colors: ["Preto","Branco"] }
+];
+
+const cart = [];
+const money = value => value.toLocaleString("pt-BR", {style:"currency", currency:"BRL"});
+
+function renderProducts(){
+  const grid = document.getElementById("productGrid");
+  const empty = document.getElementById("emptyStore");
+  grid.innerHTML = "";
+  empty.style.display = PRODUCTS.length ? "none" : "block";
+  PRODUCTS.forEach(product => {
+    const card = document.createElement("article");
+    card.className = "product-card";
+    const image = product.photo
+      ? `<img class="product-image" src="${escapeHTML(product.photo)}" alt="${escapeHTML(product.name)}">`
+      : `<div class="product-image placeholder">Foto da peça será adicionada</div>`;
+    card.innerHTML = `${image}<div class="product-info"><h3>${escapeHTML(product.name)}</h3><p>${escapeHTML(product.description || "Uma peça escolhida com carinho pela Flora.")}</p><div class="price">${money(Number(product.price || 0))}</div><div class="product-options"><label>Tamanho<select class="size">${(product.sizes || ["Único"]).map(s=>`<option>${escapeHTML(s)}</option>`).join("")}</select></label><label>Cor<select class="color">${(product.colors || ["Conforme foto"]).map(c=>`<option>${escapeHTML(c)}</option>`).join("")}</select></label></div><button class="add-btn">Adicionar à sacola</button></div>`;
+    card.querySelector(".add-btn").addEventListener("click", () => {
+      cart.push({id:product.id, name:product.name, price:Number(product.price || 0), size:card.querySelector(".size").value, color:card.querySelector(".color").value});
+      renderCart(); toast("Peça adicionada à sacola.");
+    });
+    grid.appendChild(card);
+  });
+}
+function escapeHTML(value){return String(value).replace(/[&<>"']/g, c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));}
+function openCart(){document.getElementById("overlay").classList.add("show");}
+function closeCart(event){if(!event || event.target.id==="overlay")document.getElementById("overlay").classList.remove("show");}
+function renderCart(){
+  document.getElementById("cartCount").textContent=cart.length;
+  const area=document.getElementById("cartItems");
+  area.innerHTML="";
+  if(!cart.length){area.innerHTML="<p>Sua sacola está vazia.</p>";}
+  cart.forEach((item,index)=>{
+    const row=document.createElement("div");row.className="cart-line";
+    row.innerHTML=`<span>${escapeHTML(item.name)}<br><small>Tam.: ${escapeHTML(item.size)} · Cor: ${escapeHTML(item.color)}</small></span><span>${money(item.price)} <button aria-label="Remover item" onclick="removeItem(${index})">×</button></span>`;
+    area.appendChild(row);
+  });
+  document.getElementById("cartTotal").textContent=money(cart.reduce((sum,item)=>sum+item.price,0));
+}
+function removeItem(index){cart.splice(index,1);renderCart();}
+function toast(message){const t=document.getElementById("toast");t.textContent=message;t.classList.add("show");setTimeout(()=>t.classList.remove("show"),2600);}
+function contactStore(){
+  if(!WHATSAPP_NUMBER){toast("Antes de publicar, configure o número de WhatsApp no arquivo do site.");return;}
+  window.open("https://wa.me/"+WHATSAPP_NUMBER,"_blank","noopener");
+}
+function checkout(){
+  if(!cart.length){toast("Adicione uma peça à sacola primeiro.");return;}
+  if(!WHATSAPP_NUMBER){toast("Antes de publicar, configure o número de WhatsApp no arquivo do site.");return;}
+  const lines=cart.map(i=>`• ${i.name} | tam. ${i.size} | cor ${i.color} | ${money(i.price)}`).join("\n");
+  const total=money(cart.reduce((sum,i)=>sum+i.price,0));
+  const message=encodeURIComponent("Olá! Gostaria de consultar estas peças da Flora Store:\n"+lines+"\nTotal dos itens: "+total+"\nPode confirmar disponibilidade e entrega?");
+  window.open("https://wa.me/"+WHATSAPP_NUMBER+"?text="+message,"_blank","noopener");
+}
+renderProducts();
+</script>
+</body>
+</html>
